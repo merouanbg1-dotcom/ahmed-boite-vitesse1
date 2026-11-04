@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmed Boîte Vitesse — Spécialiste boîte de vitesses · Ouled Moussa & Bouira</title>
+<link rel="icon" href="images/favicon.png">
+<meta name="description" content="Diagnostic scanner, vidange, réparation et pièces pour boîtes manuelles, automatiques, DSG et CVT. Ouled Moussa (Boumerdès) et Bouira.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800;900&display=swap">
+<style>
+/* ============ Couleurs et typo — modifiez ici ============ */
+:root{
+  --red:#E31B23; --red-dark:#8E0F14; --red-text:#FF5A5F;
+  --bg:#0B0B0C; --surface:#151518; --surface-2:#1C1C20; --line:#2A2A2F; --line-2:#3A3A40;
+  --text:#FFFFFF; --muted:#B9B9C2; --muted-2:#C9C9D1; --yellow:#F5C518;
+  --body:'Inter',system-ui,sans-serif; --head:'Montserrat','Inter',sans-serif;
+}
+html[lang="ar"]{ --body:'Cairo',system-ui,sans-serif; --head:'Cairo',system-ui,sans-serif; }
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--body);color:var(--text);background:var(--bg);line-height:1.5}
+a{color:var(--text)} a:hover{color:var(--red-text)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.12}
+p{margin:0}
+.wrap{max-width:none;margin:0;padding:0 clamp(16px,4vw,72px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:16px;min-height:48px;padding:12px 24px;border-radius:6px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;text-align:center}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{color:#fff;background:#C8141B}
+.btn-ghost{border-color:#fff;color:#fff;background:transparent}
+.btn-ghost:hover{color:#fff;border-color:var(--red);background:var(--red)}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red-text)}
+.eyebrow::before{content:"";width:32px;height:3px;background:var(--red)}
+.muted{color:var(--muted)}
+:focus-visible{outline:3px solid var(--red-text);outline-offset:2px}
+
+/* Barre du haut + header */
+.topbar{background:var(--red);font-size:13px;font-weight:600}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;padding-top:8px;padding-bottom:8px}
+.topbar a{text-decoration:none}
+.topbar .phones{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
+.social{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700}
+.social .ico{width:30px;height:30px;border-radius:50%;background:#fff;color:#0B0B0C;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.topbar .social .ico{width:24px;height:24px;background:#0B0B0C;color:#fff}
+.social.big{border:1.5px solid var(--line-2);border-radius:6px;padding:10px 14px;min-height:48px;align-self:flex-start}
+.social.big:hover{border-color:var(--red)}
+header{background:var(--bg);border-bottom:1px solid #26262B;position:sticky;top:0;z-index:20}
+.head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:78px;width:auto}
+.foot-logo{display:inline-block}
+.foot-logo img{height:70px;width:auto}
+.logo .mark{width:42px;height:42px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center}
+.logo .a{display:block;font-family:var(--head);font-weight:900;font-size:20px;letter-spacing:.5px;line-height:1}
+.logo .b{display:block;font-family:var(--head);font-weight:800;font-size:13px;letter-spacing:2px;color:var(--red-text);line-height:1.3}
+nav.main{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:15px;font-weight:600}
+nav.main a{text-decoration:none;padding:6px 0}
+nav.main a[aria-current="page"]{color:var(--red-text);box-shadow:inset 0 -2px 0 var(--red)}
+.head-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.langs{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
+.langs button{font:inherit;font-size:14px;min-width:44px;min-height:40px;padding:0 10px;border:0;cursor:pointer;background:var(--surface);color:#fff}
+.langs button[aria-pressed="true"]{background:var(--red);font-weight:800}
+
+/* Hero */
+.hero{display:flex;flex-wrap:wrap;gap:40px;align-items:center;padding-top:56px;padding-bottom:64px}
+.hero-text{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:20px;position:relative;z-index:2}
+.hero h1{font-weight:900;font-size:clamp(40px,5.5vw,66px);letter-spacing:-1px}
+.hero h1 .r{display:block;color:var(--red)}
+.hero-sub{font-size:18px;line-height:1.6;color:var(--muted-2);max-width:520px}
+.points{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:8px}
+.points span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#E4E4EA}
+.hero-visual{flex:1.2 1 520px;min-width:0;position:relative;height:clamp(420px,42vw,640px)}
+.hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%;border-radius:4px}
+.chev{position:absolute;top:0;bottom:0;z-index:2;clip-path:polygon(0 0,45% 0,100% 50%,45% 100%,0 100%,55% 50%)}
+.chev.c1{left:-10px;width:180px;background:var(--red)}
+.chev.c2{left:70px;width:120px;top:40px;bottom:40px;background:var(--red-dark)}
+html[dir="rtl"] .chev{transform:scaleX(-1)}
+html[dir="rtl"] .chev.c1{left:auto;right:-10px}
+html[dir="rtl"] .chev.c2{left:auto;right:70px}
+
+/* Sections */
+section{padding:0 0 72px}
+.section-title{font-size:clamp(28px,3.6vw,36px);font-weight:800}
+.framed{border:1.5px solid var(--red);border-radius:6px;padding:0 28px 32px}
+.framed-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:-22px;margin-bottom:28px}
+.framed-head h2{background:var(--bg);padding:0 16px;font-size:30px;font-weight:800}
+.badge{background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:4px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.svc .ic{width:48px;height:48px;border-radius:6px;background:#2A0A0C;border:1px solid var(--red);display:flex;align-items:center;justify-content:center}
+.svc h3{font-size:19px;font-weight:800}
+.svc p{font-size:15px;line-height:1.6;color:var(--muted);flex-grow:1}
+.svc .bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.svc .bar i{display:block;height:4px;width:60%;background:var(--red)}
+.svc .foot{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.quote{font-size:14px;font-weight:700;color:var(--red-text)}
+.btn-sm{background:var(--red);color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:10px 14px;border-radius:4px;min-height:40px;display:inline-flex;align-items:center}
+.btn-sm:hover{color:#fff;background:#C8141B}
+.banners{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.banner{text-decoration:none;border-radius:6px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.banner .pic{height:220px;background:#fff;position:relative}
+.banner .pic img{width:100%;height:100%;object-fit:cover}
+.banner .pic img.contain{object-fit:contain}
+.banner .tag{position:absolute;top:14px;inset-inline-start:14px;background:var(--red);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:6px 10px;border-radius:3px;text-transform:uppercase}
+.banner .txt{padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.banner h3{font-size:21px;font-weight:800;color:#fff}
+.banner .go{margin-top:8px;font-size:13px;font-weight:800;letter-spacing:1px;color:var(--red-text);text-transform:uppercase}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.steps li{display:flex;gap:14px;align-items:center;font-size:16px;font-weight:600}
+.steps .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:800}
+.band{background:var(--surface);border-top:1px solid #26262B;border-bottom:1px solid #26262B;padding:64px 0;margin-bottom:72px}
+.band .wrap{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.band .pic{flex:1 1 440px;position:relative;height:380px;border-radius:6px;overflow:hidden;background:#fff}
+.band .pic img{width:100%;height:100%;object-fit:cover}
+.band .pic .btn{position:absolute;bottom:20px;inset-inline-end:20px}
+.info-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.info{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.info .lbl{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red-text)}
+.info .ph{text-decoration:none;display:flex;flex-direction:column}
+.info .ph b{font-family:'Montserrat',sans-serif;font-weight:800;font-size:22px}
+.map{border-radius:6px;overflow:hidden;border:1px solid var(--line);margin-top:16px;height:360px;background:var(--surface)}
+.map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.3) contrast(1.05)}
+footer{border-top:1px solid #26262B;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:22px;padding-bottom:22px}
+footer details{width:100%}
+footer summary{cursor:pointer;color:var(--muted)}
+footer .credits{font-size:12px;line-height:1.7;margin-top:8px}
+footer .credits a{color:var(--muted)}
+
+/* Pièces */
+.shop{display:flex;flex-wrap:wrap;border:1.5px solid var(--red);border-radius:6px;overflow:hidden}
+.cats{flex:1 1 240px;background:#fff;color:#16181C;display:flex;flex-direction:column}
+.cats .t{padding:18px 20px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;border-bottom:1px solid #E4E4E8}
+.cats button{font:inherit;font-size:14px;font-weight:500;text-align:start;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 20px;min-height:46px;border:0;border-bottom:1px solid #E4E4E8;background:#fff;color:#2A2D33}
+.cats button[aria-pressed="true"]{background:#FDECEC;color:#B3121A;font-weight:700}
+.shop-main{flex:999 1 640px;min-width:0;display:flex;flex-direction:column}
+.searchrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
+.searchrow input{flex:1 1 280px;font:inherit;font-size:15px;padding:12px 14px;min-height:46px;border-radius:6px;border:1px solid var(--line-2);background:var(--bg);color:#fff}
+.parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.part{border-inline-start:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
+.part .pic{height:150px;border-radius:4px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.part .pic img{width:100%;height:100%;object-fit:cover}
+.part .pic .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--surface);color:#5A5A62}
+.part .pic.has-img .ph{display:none}
+.part .cat{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 8px;border-radius:3px;background:var(--yellow);color:#16181C}
+.part h3{font-size:16px;font-weight:700;line-height:1.3;flex-grow:1}
+.part .acts{display:flex;gap:8px}
+.part .acts .btn-sm{flex:1;justify-content:center;min-height:44px}
+.icon-btn{width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border:1.5px solid #fff;border-radius:4px;color:#fff}
+.photo-note{font-size:12px;color:var(--muted);padding:12px 20px}
+
+/* Formulaires */
+.page-head{padding:44px 0 24px;display:flex;flex-direction:column;gap:10px}
+.page-head h1{font-size:clamp(32px,4vw,46px);font-weight:900}
+.layout{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;padding-bottom:80px}
+.layout form{flex:999 1 620px;min-width:0;display:flex;flex-direction:column;gap:22px}
+fieldset{margin:0;border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+legend{font-family:var(--head);font-weight:800;font-size:19px;padding:0 10px;background:var(--red);border-radius:3px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;font-weight:400;font-size:16px;padding:12px;min-height:48px;border:1px solid var(--line-2);border-radius:6px;background:var(--bg);color:#fff;width:100%}
+select:disabled{opacity:.6}
+textarea{resize:vertical;min-height:90px}
+input::placeholder,textarea::placeholder{color:#8A8A93}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));align-items:start}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font:inherit;font-size:15px;font-weight:500;cursor:pointer;border-radius:4px;padding:10px 16px;min-height:44px;border:1.5px solid var(--line-2);background:var(--bg);color:#fff}
+.pill[aria-pressed="true"]{border-color:var(--red);background:var(--red);font-weight:700}
+.days{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.tiles{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.tile{font:inherit;font-size:15px;font-weight:600;text-align:start;cursor:pointer;border-radius:4px;padding:12px 14px;min-height:52px;display:flex;align-items:center;gap:10px;border:1.5px solid var(--line-2);background:var(--bg);color:#fff}
+.tile .ck{flex:none;width:20px;height:20px;border-radius:3px;border:2px solid #8A8A93;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.tile[aria-pressed="true"]{border-color:var(--red);background:#2A0A0C}
+.tile[aria-pressed="true"] .ck{background:var(--red);border-color:var(--red)}
+aside.recap{flex:1 1 320px;min-width:0;background:#fff;color:#16181C;border-radius:6px;border-top:5px solid var(--red);padding:24px;display:flex;flex-direction:column;gap:14px;position:sticky;top:110px}
+aside.recap h2{font-size:22px;font-weight:800}
+aside.recap dl{margin:0;display:flex;flex-direction:column;gap:12px}
+aside.recap dt{color:#5A5F67;font-size:13px}
+aside.recap dd{margin:2px 0 0;font-weight:700}
+aside.recap a{color:#B3121A}
+aside.recap .note{font-size:13px;color:#4A4F57}
+.err{color:#B91C1C;font-size:14px;font-weight:700}
+.time-msg{font-size:14px;color:var(--muted)}
+.time-msg.bad{color:var(--red-text);font-weight:700}
+.done{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--red);border-radius:6px;padding:40px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;margin-bottom:80px}
+
+/* Suivi */
+.track{max-width:540px;margin:0 auto;padding:44px 24px 80px;display:flex;flex-direction:column;gap:18px}
+.demo-note{font-size:13px;background:#3A2A00;color:#FDE68A;border-radius:4px;padding:10px 12px}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:flex;gap:14px}
+.timeline .rail{display:flex;flex-direction:column;align-items:center}
+.dot{width:16px;height:16px;border-radius:50%;flex:none;background:var(--bg);border:2px solid #6A6A72}
+.dot.done{background:#fff;border-color:#fff}
+.dot.now{border:4px solid var(--red)}
+.vbar{width:2px;flex:1;min-height:22px;background:var(--line-2)}
+.vbar.done{background:#fff}
+.timeline .txt{padding-bottom:16px}
+
+@media (max-width:700px){
+  header{position:static}
+  .topbar .phones>span{display:none}
+  .topbar .wrap{align-items:center}
+  .head{gap:10px 12px}
+  .logo{order:1}
+  .head-right{order:2}
+  .head-right .btn{display:none}
+  nav.main{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:20px;font-size:15px}
+  nav.main a{white-space:nowrap}
+  .logo img{height:58px}
+  .hero{padding-top:32px;gap:28px}
+  .hero-visual{height:320px}
+  .chev.c1{width:110px}.chev.c2{width:80px;left:40px}
+  html[dir="rtl"] .chev.c2{right:40px}
+  .framed{padding:0 16px 20px}
+  aside.recap{position:static}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span data-t="topHours"></span>
+  <span class="phones">
+    <span><span data-t="lineManual"></span> : <a href="tel:+213550452542" dir="ltr">0550 45 25 42</a></span>
+    <span><span data-t="lineAuto"></span> : <a href="tel:+213550053129" dir="ltr">0550 05 31 29</a></span>
+    <span><span data-t="lineBouira"></span> : <a href="tel:+213550480262" dir="ltr">0550 48 02 62</a></span>
+    <a class="social" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>TikTok</a>
+  </span>
+</div></div>
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#/"><img src="images/logo.png" alt="Ahmed Boîte Vitesse" width="190" height="110"></a>
+    <nav class="main" aria-label="Menu">
+      <a href="#/" data-route="home" data-t="navHome"></a>
+      <a href="#/rdv" data-route="rdv" data-t="navRdv"></a>
+      <a href="#/pieces" data-route="pieces" data-t="navParts"></a>
+      <a href="#/suivi" data-route="suivi" data-t="navTrack"></a>
+      <a href="#/#contact" data-t="navContact"></a>
+    </nav>
+    <div class="head-right">
+      <div class="langs" role="group" aria-label="Langue / اللغة / Language">
+        <button type="button" data-lang="ar">ع</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn btn-red" href="#/rdv" data-t="ctaRdv" style="min-height:44px;padding:10px 18px;font-size:15px"></a>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="info-cards">
+      <div class="info">
+        <p class="lbl" data-t="hqLabel"></p>
+        <p style="font-family:var(--head);font-weight:800;font-size:20px" data-t="hqAddr"></p>
+        <p class="muted" style="font-size:14px">Google Maps : M9F6+FJQ</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+          <a class="btn-sm" id="dir-link" href="#" data-t="directions"></a>
+          <a class="btn-sm" style="background:transparent;border:1.5px solid #fff" id="maps-link" href="#">Google Maps</a>
+        </div>
+      </div>
+      <div class="info">
+        <p class="lbl" data-t="phonesLabel"></p>
+        <a class="ph" href="https://wa.me/213550452542"><span class="muted" style="font-size:14px" data-t="lineManual"></span><b dir="ltr">0550 45 25 42</b></a>
+        <a class="ph" href="https://wa.me/213550053129"><span class="muted" style="font-size:14px" data-t="lineAuto"></span><b dir="ltr">0550 05 31 29</b></a>
+        <a class="ph" href="https://wa.me/213550480262"><span class="muted" style="font-size:14px" data-t="lineBouira"></span><b dir="ltr">0550 48 02 62</b></a>
+        <a class="social big" data-social="tiktok" href="#" target="_blank" rel="noopener"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span><span><span data-t="followUs"></span> TikTok</span></a>
+      </div>
+      <div class="info">
+        <p class="lbl" data-t="hoursLabel"></p>
+        <p style="font-size:17px;font-weight:700" data-t="hoursOpen"></p>
+        <p style="font-size:17px;font-weight:700" data-t="hoursThu"></p>
+        <p class="muted" data-t="hoursClosed"></p>
+        <p class="muted" style="font-size:13px;margin-top:6px"><span data-t="bouiraLabel"></span> : <span data-t="bouiraAddr"></span></p>
+      </div>
+    </div>
+    <div class="map"><iframe id="map" title="Ahmed Boîte Vitesse — Ouled Moussa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</section>
+<footer><div class="wrap">
+  <span class="foot-logo"><img src="images/logo.png" alt="Ahmed Boîte Vitesse"></span>
+  <span>© <span id="year"></span> <span data-t="brandA"></span> <span data-t="brandB"></span></span>
+  <span data-t="footer"></span>
+  <a class="social" data-social="tiktok" href="#" target="_blank" rel="noopener"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>TikTok</a>
+  <details><summary data-t="creditsTitle"></summary><div class="credits" id="credits"></div></details>
+</div></footer>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* =====================================================================
+   INFOS DE L'ENTREPRISE — modifiez ici
+   ===================================================================== */
+const INFO = {
+  phoneManual: { display: '0550 45 25 42', intl: '213550452542' },   // boîte manuelle (numéro Google Maps)
+  phoneAuto:   { display: '0550 05 31 29', intl: '213550053129' },   // boîte automatique & vidange
+  phoneBouira: { display: '0550 48 02 62', intl: '213550480262' },   // agence Bouira
+  /* Réseaux sociaux : collez le lien de votre compte TikTok ici */
+  tiktok: 'https://www.tiktok.com/@mustapha_boite',
+  hq: { lat: 36.6737209, lng: 3.3616056, placeId: 'ChIJKyTohnddjhIRq_kVWtzaSEA' },
+  /* Horaires (comme sur Google Maps). 0 = dimanche … 6 = samedi. null = fermé */
+  hours: { 0: ['08:30', '16:30'], 1: ['08:30', '16:30'], 2: ['08:30', '16:30'], 3: ['08:30', '16:30'], 4: ['08:30', '12:30'], 5: null, 6: ['08:30', '16:30'] }
+};
+
+/* Photos des voitures (dossier images/) */
+const CAR = { hero: 'images/gle.jpg', auto: 'images/range.jpg', dsg: 'images/audi.jpg', manual: 'images/logan.jpg', band: 'images/audi.jpg' };
+
+/* Photos des pièces : photos libres de Wikimedia Commons (illustration).
+   Pour mettre VOS photos : remplacez l'adresse par 'images/pieces/nom.jpg'. */
+const commons = (f) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f) + '?width=500';
+const PHOTO = {
+  clutch:    { src: commons('Clutchdisc.jpg'), credit: 'Clutchdisc.jpg — Sonett72, domaine public' },
+  converter: { src: commons('Torque-converter-cutbox-model.jpg'), credit: 'Torque-converter-cutbox-model.jpg — BerndB, CC BY-SA 3.0' },
+  autoCut:   { src: commons('Automatic_transmission_cut.jpg'), credit: 'Automatic_transmission_cut.jpg — Silverxxx, CC BY-SA 3.0' },
+  dsg:       { src: commons('VW_DSG_transmission_DTMB.jpg'), credit: 'VW_DSG_transmission_DTMB.jpg — Matti Blume, CC BY-SA 2.5' },
+  dct:       { src: commons('M-Double_Clutch_Transmission.jpg'), credit: 'M-Double_Clutch_Transmission.jpg — Anslaton, CC BY 3.0' },
+  manual:    { src: commons('Manual_synchronized_gearbox.jpg'), credit: 'Manual_synchronized_gearbox.jpg — Oldřich Lebeda (voir licence sur Commons)' },
+  cvt:       { src: commons('Toyota_Super_CVT-i_01.JPG'), credit: 'Toyota_Super_CVT-i_01.JPG (voir auteur et licence sur Commons)' },
+  atf:       { src: commons('Valvoline_Licensed_ATF+4_Front.jpg'), credit: 'Valvoline_Licensed_ATF+4_Front.jpg — Hymn62 (voir licence sur Commons)' },
+  shift:     { src: commons('Shift_stick.jpg'), credit: 'Shift_stick.jpg (voir auteur et licence sur Commons)' }
+};
+
+/* =====================================================================
+   TEXTES (FR / AR / EN)
+   ===================================================================== */
+const T = {
+fr: {
+  brandA: 'AHMED', brandB: 'BOÎTE VITESSE', navHome: 'Accueil', navRdv: 'Rendez-vous', navParts: 'Pièces', navTrack: 'Suivi', navContact: 'Contact',
+  topHours: 'Sam – Mer 8:30 – 16:30 · Jeu 8:30 – 12:30 · Ven fermé', lineManual: 'Boîte manuelle', lineAuto: 'Automatique & vidange', lineBouira: 'Agence Bouira',
+  ctaRdv: 'Prendre RDV', ctaRdvLong: 'Prendre rendez-vous', ctaParts: 'Voir les pièces',
+  eyebrow: 'Spécialiste boîte de vitesses', heroA: 'Réparation', heroB: 'de boîtes de vitesses',
+  heroSub: 'Diagnostic par scanner, vidange, réparation et pièces pour boîtes manuelles, automatiques, DSG et CVT. Ouled Moussa & Bouira.',
+  heroPoints: ['Toutes marques', 'Devis avant intervention', 'Pièces neuves & reconditionnées'], heroAlt: 'SUV blanc',
+  servicesTitle: 'Nos services', onQuote: 'Prix sur devis', book: 'Réserver',
+  services: [
+    ['Diagnostic scanner', 'Lecture des codes défaut, test du calculateur et de la mécatronique, essai routier.'],
+    ['Vidange de boîte', 'Vidange statique ou dynamique, huile adaptée (ATF, DSG, CVT, manuelle) et filtre.'],
+    ['Réparation boîte automatique', 'Convertisseur, bloc hydraulique, électrovannes, reconditionnement complet.'],
+    ['Réparation boîte manuelle', 'Synchros, pignons, roulements, fourchettes, joints : réfection complète.'],
+    ['Embrayage & DSG', 'Kit d’embrayage, volant bimasse, double embrayage, mécatronique.'],
+    ['Vente de pièces', 'Pièces neuves et reconditionnées, boîtes complètes.']
+  ],
+  banners: [['Boîte automatique', 'SUV & 4x4', 'Convertisseur, bloc hydraulique, vidange ATF'], ['DSG & double embrayage', 'Berlines', 'Mécatronique, embrayage, adaptation'], ['Boîte manuelle', 'Citadines', 'Embrayage, synchros, vidange']],
+  bannerCta: 'Réserver ›',
+  bandTitle: 'Réservez en 2 minutes', bandSub: 'Choisissez le service, votre véhicule, le jour et l’heure. Nous vous rappelons pour confirmer et donner le prix.',
+  steps: ['Réservez en ligne', 'Diagnostic au scanner', 'Devis validé par vous', 'Récupérez votre véhicule'],
+  hqLabel: 'Siège', hqAddr: 'Ouled Moussa, Boumerdès', directions: 'Itinéraire', phonesLabel: 'Téléphone / WhatsApp', hoursLabel: 'Horaires',
+  hoursOpen: 'Samedi – Mercredi : 8:30 – 16:30', hoursThu: 'Jeudi : 8:30 – 12:30', hoursClosed: 'Vendredi : fermé',
+  bouiraLabel: 'Agence Bouira', bouiraAddr: 'adresse à préciser',
+  footer: 'Diagnostic · Vidange · Réparation · Pièces', creditsTitle: 'Crédits photos', followUs: 'Suivez-nous sur',
+  /* RDV */
+  rdvTitle: 'Prendre rendez-vous', rdvSub: 'Trois étapes, moins de deux minutes. La demande part sur WhatsApp, nous vous rappelons pour confirmer et donner le prix.',
+  s1: '1. Que voulez-vous faire ?', s1hint: 'Vous pouvez cocher plusieurs choix.', s2: '2. Votre véhicule', boxType: 'Type de boîte',
+  brandL: 'Marque', modelL: 'Modèle', yearL: 'Année', choose: 'Choisir…', chooseBrandFirst: 'Choisissez d’abord la marque', other: 'Autre (écrire)', typeBrand: 'Écrivez la marque', typeModel: 'Écrivez le modèle',
+  symptoms: 'Symptômes (facultatif)', symptomsPh: 'À-coups, patinage, bruit, voyant allumé…', s3: '3. Jour, heure et contact', workshop: 'Atelier', day: 'Jour', dayHint: '(vendredi fermé)', time: 'Heure',
+  openFromTo: 'Ouvert de {a} à {b} ce jour-là', timeBad: 'Choisissez une heure entre {a} et {b}', name: 'Nom complet', phone: 'Téléphone / WhatsApp',
+  recap: 'Récapitulatif', recServices: 'Services', recCar: 'Véhicule', recWhen: 'Date et heure', recPrice: 'Prix', priceQuote: 'Sur devis — nous vous appelons', sentTo: 'Envoyé au',
+  recNote: 'Le prix est donné par téléphone ou à l’atelier après diagnostic. Aucune intervention sans votre accord.', confirm: 'Envoyer sur WhatsApp', orCall: 'Ou appelez :',
+  errServices: 'Choisissez au moins un service.', errName: 'Indiquez votre nom et votre téléphone.', errTime: 'L’heure choisie est hors des horaires.',
+  sentTitle: 'Demande prête', sentSub: 'WhatsApp s’est ouvert avec votre demande : appuyez sur Envoyer. Nous vous rappelons pour confirmer.', newReq: 'Nouvelle demande', at: 'à', none: '—', locale: 'fr-FR',
+  svc: { diag: 'Diagnostic scanner', vid: 'Vidange de boîte', repA: 'Réparation boîte automatique', repM: 'Réparation boîte manuelle', emb: 'Changement d’embrayage', dsg: 'DSG / mécatronique', noise: 'Bruit ou à-coups (je ne sais pas)', part: 'Acheter / poser une pièce', quote: 'Devis seulement' },
+  bx: { man: 'Manuelle', auto: 'Automatique', dsg: 'DSG', cvt: 'CVT', nsp: 'Je ne sais pas' }, shops: { om: 'Ouled Moussa (siège)', bo: 'Bouira' },
+  waHello: 'Bonjour, je souhaite prendre rendez-vous.', waName: 'Nom', waPhone: 'Téléphone', waNotes: 'Symptômes',
+  /* Pièces */
+  partsTitle: 'Pièces de boîte de vitesses', partsSub: 'Toutes les pièces pour boîtes manuelles, automatiques, DSG et CVT. Prix sur devis : demandez le prix sur WhatsApp ou par téléphone.',
+  allCats: 'Toutes catégories', all: 'Tout', searchPh: 'Rechercher : embrayage, filtre, mécatronique…', ask: 'Demander le prix', call: 'Appeler', results: 'pièce(s)',
+  noResult: 'Aucune pièce trouvée. Écrivez-nous sur WhatsApp, nous la cherchons pour vous.', waPart: 'Bonjour, je voudrais le prix de : ',
+  photoNote: 'Photos d’illustration. Envoyez la référence ou la carte grise pour vérifier la compatibilité.',
+  /* Suivi */
+  trackTitle: 'Suivre mon véhicule', trackSub: 'Entrez votre nom et le téléphone donnés à l\u2019atelier.', fileNo: 'N° de dossier', search: 'Afficher', demo: 'Démonstration : le suivi en temps réel sera branché sur le logiciel de l’atelier.',
+  yourCar: 'Votre véhicule', progress: 'Étape 3 sur 6 · En attente de votre accord', action: 'Action requise', quoteTitle: 'Le devis est prêt', quoteSub: 'Nous vous appelons pour le prix, ou appelez-nous directement.', approve: 'Valider le devis',
+  steps7: ['Véhicule reçu', 'Diagnostic scanner', 'Devis à valider', 'Réparation', 'Contrôle et essai routier', 'Prêt à récupérer', 'Véhicule rendu'],
+  trackPhone: 'Téléphone donné à l\u2019atelier', trackNotFound: 'Aucun véhicule trouvé avec ce nom et ce téléphone. Vérifiez qu\u2019ils sont les mêmes que ceux donnés à l\u2019atelier.', trackName: 'Votre nom', trackErr: 'Erreur de connexion. Réessayez.',
+  quoteAmount: 'Montant du devis', quoteApproved: 'Devis validé. Merci, la réparation peut commencer.', quoteRefused: 'Devis refusé', diagnosisL: 'Diagnostic', lastUpdate: 'Dernière mise à jour',
+  stepOf: 'Étape {a} sur {b}', liveNote: 'Cette page se met à jour automatiquement.', clientApproved: 'Devis validé par le client',
+  savedTitle: 'Demande enregistrée', savedSub: 'Votre demande est arrivée à l\u2019atelier. Nous vous appelons pour confirmer le rendez-vous et donner le prix.', alsoWa: 'Envoyer aussi sur WhatsApp', saveErr: 'L\u2019enregistrement a échoué. Envoyez la demande sur WhatsApp :', sending: 'Envoi…', confirmDb: 'Envoyer la demande',
+  da: 'DA'
+},
+ar: {
+  brandA: 'أحمد', brandB: 'علبة السرعة', navHome: 'الرئيسية', navRdv: 'حجز موعد', navParts: 'قطع الغيار', navTrack: 'المتابعة', navContact: 'اتصل بنا',
+  topHours: 'السبت – الأربعاء 8:30 – 16:30 · الخميس 8:30 – 12:30 · الجمعة مغلق', lineManual: 'العلبة العادية', lineAuto: 'أوتوماتيك وتغيير الزيت', lineBouira: 'فرع البويرة',
+  ctaRdv: 'احجز موعد', ctaRdvLong: 'احجز موعدك', ctaParts: 'تصفح القطع',
+  eyebrow: 'مختص في علب السرعة', heroA: 'تصليح', heroB: 'علب السرعة',
+  heroSub: 'تشخيص بالسكانير، تغيير الزيت، تصليح وقطع غيار للعلب العادية، الأوتوماتيكية، DSG و CVT. أولاد موسى والبويرة.',
+  heroPoints: ['جميع الماركات', 'السعر قبل أي تدخل', 'قطع جديدة ومجددة'], heroAlt: 'سيارة رباعية الدفع بيضاء',
+  servicesTitle: 'خدماتنا', onQuote: 'السعر حسب التقدير', book: 'احجز',
+  services: [
+    ['تشخيص بالسكانير', 'قراءة الأعطال، فحص الكمبيوتر والميكاترونيك، وتجربة على الطريق.'],
+    ['تغيير زيت العلبة', 'تغيير ثابت أو ديناميكي، زيت مناسب (ATF، DSG، CVT، عادية) مع الفلتر.'],
+    ['تصليح العلبة الأوتوماتيكية', 'محول العزم، البلوك الهيدروليكي، الصمامات، تجديد كامل.'],
+    ['تصليح العلبة العادية', 'السانكرو، المسننات، الرولمان، الشوكات والجوانات.'],
+    ['الأمبرياج و DSG', 'طقم أمبرياج، فولون مزدوج، قابض مزدوج، ميكاترونيك.'],
+    ['بيع قطع الغيار', 'قطع جديدة ومجددة، وعلب كاملة.']
+  ],
+  banners: [['علبة أوتوماتيكية', 'SUV و 4x4', 'محول العزم، البلوك الهيدروليكي، زيت ATF'], ['DSG وقابض مزدوج', 'سيارات سيدان', 'ميكاترونيك، أمبرياج، برمجة'], ['علبة عادية', 'السيارات الصغيرة', 'أمبرياج، سانكرو، تغيير الزيت']],
+  bannerCta: 'احجز ‹',
+  bandTitle: 'احجز في دقيقتين', bandSub: 'اختر الخدمة، سيارتك، اليوم والساعة. نتصل بك للتأكيد وإعطائك السعر.',
+  steps: ['احجز عبر الإنترنت', 'التشخيص بالسكانير', 'توافق على السعر', 'استلم سيارتك'],
+  hqLabel: 'المقر', hqAddr: 'أولاد موسى، بومرداس', directions: 'الاتجاهات', phonesLabel: 'الهاتف / واتساب', hoursLabel: 'أوقات العمل',
+  hoursOpen: 'من السبت إلى الأربعاء: 8:30 – 16:30', hoursThu: 'الخميس: 8:30 – 12:30', hoursClosed: 'الجمعة: مغلق',
+  bouiraLabel: 'فرع البويرة', bouiraAddr: 'العنوان يُحدد لاحقاً',
+  footer: 'تشخيص · تغيير الزيت · تصليح · قطع غيار', creditsTitle: 'مصادر الصور', followUs: 'تابعونا على',
+  rdvTitle: 'احجز موعدك', rdvSub: 'ثلاث خطوات في أقل من دقيقتين. يُرسل الطلب عبر واتساب، ونتصل بك للتأكيد وإعطائك السعر.',
+  s1: '1. ماذا تريد أن تفعل؟', s1hint: 'يمكنك اختيار أكثر من خدمة.', s2: '2. سيارتك', boxType: 'نوع العلبة',
+  brandL: 'الماركة', modelL: 'الموديل', yearL: 'السنة', choose: 'اختر…', chooseBrandFirst: 'اختر الماركة أولاً', other: 'أخرى (اكتب)', typeBrand: 'اكتب الماركة', typeModel: 'اكتب الموديل',
+  symptoms: 'الأعراض (اختياري)', symptomsPh: 'رجّات، انزلاق، صوت، ضوء التحذير…', s3: '3. اليوم، الساعة ومعلومات الاتصال', workshop: 'الورشة', day: 'اليوم', dayHint: '(الجمعة مغلق)', time: 'الساعة',
+  openFromTo: 'مفتوح من {a} إلى {b} في هذا اليوم', timeBad: 'اختر ساعة بين {a} و {b}', name: 'الاسم الكامل', phone: 'الهاتف / واتساب',
+  recap: 'ملخص الطلب', recServices: 'الخدمات', recCar: 'السيارة', recWhen: 'التاريخ والساعة', recPrice: 'السعر', priceQuote: 'حسب التقدير — نتصل بك', sentTo: 'يُرسل إلى',
+  recNote: 'يُعطى السعر عبر الهاتف أو في الورشة بعد التشخيص. لا تدخل بدون موافقتك.', confirm: 'إرسال عبر واتساب', orCall: 'أو اتصل:',
+  errServices: 'اختر خدمة واحدة على الأقل.', errName: 'أدخل اسمك ورقم هاتفك.', errTime: 'الساعة المختارة خارج أوقات العمل.',
+  sentTitle: 'الطلب جاهز', sentSub: 'تم فتح واتساب بطلبك: اضغط على إرسال. سنتصل بك للتأكيد.', newReq: 'طلب جديد', at: 'على الساعة', none: '—', locale: 'ar-DZ',
+  svc: { diag: 'تشخيص بالسكانير', vid: 'تغيير زيت العلبة', repA: 'تصليح علبة أوتوماتيكية', repM: 'تصليح علبة عادية', emb: 'تغيير الأمبرياج', dsg: 'DSG / ميكاترونيك', noise: 'صوت أو رجّات (لا أعرف السبب)', part: 'شراء / تركيب قطعة', quote: 'تقدير السعر فقط' },
+  bx: { man: 'عادية', auto: 'أوتوماتيكية', dsg: 'DSG', cvt: 'CVT', nsp: 'لا أعرف' }, shops: { om: 'أولاد موسى (المقر)', bo: 'البويرة' },
+  waHello: 'السلام عليكم، أريد حجز موعد.', waName: 'الاسم', waPhone: 'الهاتف', waNotes: 'الأعراض',
+  partsTitle: 'قطع غيار علب السرعة', partsSub: 'جميع القطع للعلب العادية، الأوتوماتيكية، DSG و CVT. السعر عند الطلب عبر واتساب أو الهاتف.',
+  allCats: 'جميع الأصناف', all: 'الكل', searchPh: 'ابحث: أمبرياج، فلتر، ميكاترونيك…', ask: 'اطلب السعر', call: 'اتصل', results: 'قطعة',
+  noResult: 'لم نجد القطعة. راسلنا على واتساب ونبحث عنها لك.', waPart: 'السلام عليكم، أريد سعر: ',
+  photoNote: 'صور توضيحية. أرسل المرجع أو البطاقة الرمادية للتحقق من التوافق.',
+  trackTitle: 'تابع سيارتك', trackSub: 'أدخل اسمك ورقم الهاتف المسجلين في الورشة.', fileNo: 'رقم الملف', search: 'عرض', demo: 'عرض تجريبي: سيتم ربط المتابعة المباشرة ببرنامج الورشة.',
+  yourCar: 'سيارتك', progress: 'المرحلة 3 من 6 · في انتظار موافقتك', action: 'مطلوب منك', quoteTitle: 'التقدير جاهز', quoteSub: 'نتصل بك بالسعر، أو اتصل بنا مباشرة.', approve: 'الموافقة على التقدير',
+  steps7: ['استلام السيارة', 'التشخيص بالسكانير', 'الموافقة على التقدير', 'التصليح', 'المراقبة والتجربة', 'جاهزة للاستلام', 'تم التسليم'],
+  trackPhone: 'رقم الهاتف المسجل في الورشة', trackNotFound: 'لم نجد سيارة بهذا الاسم وهذا الهاتف. تأكد أنهما نفس المعلومات المسجلة في الورشة.', trackName: 'اسمك', trackErr: 'خطأ في الاتصال. حاول مرة أخرى.',
+  quoteAmount: 'مبلغ التقدير', quoteApproved: 'تمت الموافقة على التقدير. شكراً، يمكن بدء التصليح.', quoteRefused: 'تم رفض التقدير', diagnosisL: 'التشخيص', lastUpdate: 'آخر تحديث',
+  stepOf: 'المرحلة {a} من {b}', liveNote: 'هذه الصفحة تتحدث تلقائياً.', clientApproved: 'وافق الزبون على التقدير',
+  savedTitle: 'تم تسجيل الطلب', savedSub: 'وصل طلبك إلى الورشة. سنتصل بك لتأكيد الموعد وإعطائك السعر.', alsoWa: 'أرسل أيضاً عبر واتساب', saveErr: 'فشل التسجيل. أرسل الطلب عبر واتساب:', sending: 'جاري الإرسال…', confirmDb: 'إرسال الطلب',
+  da: 'دج'
+},
+en: {
+  brandA: 'AHMED', brandB: 'BOÎTE VITESSE', navHome: 'Home', navRdv: 'Booking', navParts: 'Parts', navTrack: 'Tracking', navContact: 'Contact',
+  topHours: 'Sat – Wed 8:30 – 16:30 · Thu 8:30 – 12:30 · Closed Friday', lineManual: 'Manual gearbox', lineAuto: 'Automatic & oil change', lineBouira: 'Bouira branch',
+  ctaRdv: 'Book now', ctaRdvLong: 'Book an appointment', ctaParts: 'Browse parts',
+  eyebrow: 'Gearbox specialist', heroA: 'Gearbox', heroB: 'repair experts',
+  heroSub: 'Scanner diagnostics, oil changes, repairs and parts for manual, automatic, DSG and CVT gearboxes. Ouled Moussa & Bouira.',
+  heroPoints: ['All makes', 'Quote before any work', 'New & reconditioned parts'], heroAlt: 'White SUV',
+  servicesTitle: 'Our services', onQuote: 'Price on quote', book: 'Book',
+  services: [
+    ['Scanner diagnostics', 'Fault code reading, TCU and mechatronic testing, road test.'],
+    ['Gearbox oil change', 'Static or dynamic change, the right oil (ATF, DSG, CVT, manual) and filter.'],
+    ['Automatic gearbox repair', 'Torque converter, valve body, solenoids, full rebuild.'],
+    ['Manual gearbox repair', 'Synchros, gears, bearings, forks, seals: full rebuild.'],
+    ['Clutch & DSG', 'Clutch kit, dual-mass flywheel, dual clutch, mechatronic.'],
+    ['Parts sales', 'New and reconditioned parts, complete gearboxes.']
+  ],
+  banners: [['Automatic gearbox', 'SUVs & 4x4', 'Torque converter, valve body, ATF change'], ['DSG & dual-clutch', 'Saloons', 'Mechatronic, clutch, adaptation'], ['Manual gearbox', 'City cars', 'Clutch, synchros, oil change']],
+  bannerCta: 'Book ›',
+  bandTitle: 'Book in 2 minutes', bandSub: 'Choose the service, your car, the day and time. We call you back to confirm and give the price.',
+  steps: ['Book online', 'Scanner diagnostics', 'You approve the quote', 'Collect your car'],
+  hqLabel: 'Head office', hqAddr: 'Ouled Moussa, Boumerdès', directions: 'Directions', phonesLabel: 'Phone / WhatsApp', hoursLabel: 'Opening hours',
+  hoursOpen: 'Saturday – Wednesday: 8:30 – 16:30', hoursThu: 'Thursday: 8:30 – 12:30', hoursClosed: 'Friday: closed',
+  bouiraLabel: 'Bouira branch', bouiraAddr: 'address to be added',
+  footer: 'Diagnostics · Oil change · Repair · Parts', creditsTitle: 'Photo credits', followUs: 'Follow us on',
+  rdvTitle: 'Book an appointment', rdvSub: 'Three steps, under two minutes. The request is sent on WhatsApp; we call you back to confirm and give the price.',
+  s1: '1. What do you need?', s1hint: 'You can pick more than one.', s2: '2. Your car', boxType: 'Gearbox type',
+  brandL: 'Make', modelL: 'Model', yearL: 'Year', choose: 'Choose…', chooseBrandFirst: 'Choose the make first', other: 'Other (type it)', typeBrand: 'Type the make', typeModel: 'Type the model',
+  symptoms: 'Symptoms (optional)', symptomsPh: 'Jerks, slipping, noise, warning light…', s3: '3. Day, time and contact', workshop: 'Workshop', day: 'Day', dayHint: '(closed Friday)', time: 'Time',
+  openFromTo: 'Open {a} to {b} that day', timeBad: 'Pick a time between {a} and {b}', name: 'Full name', phone: 'Phone / WhatsApp',
+  recap: 'Summary', recServices: 'Services', recCar: 'Car', recWhen: 'Date and time', recPrice: 'Price', priceQuote: 'On quote — we call you', sentTo: 'Sent to',
+  recNote: 'The price is given by phone or at the workshop after diagnosis. No work without your approval.', confirm: 'Send on WhatsApp', orCall: 'Or call:',
+  errServices: 'Choose at least one service.', errName: 'Enter your name and phone number.', errTime: 'The chosen time is outside opening hours.',
+  sentTitle: 'Request ready', sentSub: 'WhatsApp opened with your request: tap Send. We will call you to confirm.', newReq: 'New request', at: 'at', none: '—', locale: 'en-GB',
+  svc: { diag: 'Scanner diagnostics', vid: 'Gearbox oil change', repA: 'Automatic gearbox repair', repM: 'Manual gearbox repair', emb: 'Clutch replacement', dsg: 'DSG / mechatronic', noise: 'Noise or jerks (not sure)', part: 'Buy / fit a part', quote: 'Quote only' },
+  bx: { man: 'Manual', auto: 'Automatic', dsg: 'DSG', cvt: 'CVT', nsp: 'Not sure' }, shops: { om: 'Ouled Moussa (head office)', bo: 'Bouira' },
+  waHello: 'Hello, I would like to book an appointment.', waName: 'Name', waPhone: 'Phone', waNotes: 'Symptoms',
+  partsTitle: 'Gearbox parts', partsSub: 'Every part for manual, automatic, DSG and CVT gearboxes. Price on request: ask on WhatsApp or by phone.',
+  allCats: 'All categories', all: 'All', searchPh: 'Search: clutch, filter, mechatronic…', ask: 'Ask for price', call: 'Call', results: 'part(s)',
+  noResult: 'No part found. Message us on WhatsApp and we will find it for you.', waPart: 'Hello, I would like the price of: ',
+  photoNote: 'Illustration photos. Send the part number or registration card to check compatibility.',
+  trackTitle: 'Track my car', trackSub: 'Enter the name and phone number you gave the workshop.', fileNo: 'File number', search: 'Show', demo: 'Demo: live tracking will be connected to the workshop software.',
+  yourCar: 'Your car', progress: 'Step 3 of 6 · Waiting for your approval', action: 'Action needed', quoteTitle: 'Your quote is ready', quoteSub: 'We will call you with the price, or call us directly.', approve: 'Approve quote',
+  steps7: ['Car received', 'Scanner diagnostics', 'Quote to approve', 'Repair', 'Check and road test', 'Ready to collect', 'Handed back'],
+  trackPhone: 'Phone number given at the workshop', trackNotFound: 'No car found with this name and phone. Check they match what you gave the workshop.', trackName: 'Your name', trackErr: 'Connection error. Please try again.',
+  quoteAmount: 'Quote amount', quoteApproved: 'Quote approved. Thank you, the repair can start.', quoteRefused: 'Quote refused', diagnosisL: 'Diagnosis', lastUpdate: 'Last update',
+  stepOf: 'Step {a} of {b}', liveNote: 'This page updates automatically.', clientApproved: 'Quote approved by customer',
+  savedTitle: 'Request saved', savedSub: 'Your request reached the workshop. We will call you to confirm the appointment and give the price.', alsoWa: 'Also send on WhatsApp', saveErr: 'Saving failed. Send the request on WhatsApp:', sending: 'Sending…', confirmDb: 'Send request',
+  da: 'DZD'
+}
+};
+
+const CARS = {
+  'Renault': ['Clio', 'Symbol', 'Mégane', 'Kangoo', 'Captur', 'Fluence', 'Master'], 'Dacia': ['Logan', 'Sandero', 'Stepway', 'Duster', 'Dokker'],
+  'Peugeot': ['206', '207', '208', '301', '308', '2008', '3008', 'Partner', 'Expert'], 'Citroën': ['C3', 'C4', 'C-Elysée', 'Berlingo', 'Jumpy'],
+  'Volkswagen': ['Polo', 'Golf', 'Jetta', 'Passat', 'Tiguan', 'Touareg', 'Caddy'], 'Seat': ['Ibiza', 'Leon', 'Arona', 'Ateca'], 'Skoda': ['Fabia', 'Octavia', 'Superb', 'Kodiaq'],
+  'Audi': ['A3', 'A4', 'A5', 'A6', 'Q3', 'Q5', 'Q7'], 'Mercedes-Benz': ['Classe A', 'Classe C', 'Classe E', 'GLA', 'GLE', 'Sprinter', 'Vito'], 'BMW': ['Série 1', 'Série 3', 'Série 5', 'X1', 'X3', 'X5'],
+  'Land Rover': ['Range Rover', 'Range Rover Sport', 'Evoque', 'Discovery', 'Defender'],
+  'Hyundai': ['i10', 'i20', 'Accent', 'Elantra', 'Tucson', 'Santa Fe', 'Creta'], 'Kia': ['Picanto', 'Rio', 'Cerato', 'Sportage', 'Sorento'],
+  'Toyota': ['Yaris', 'Corolla', 'RAV4', 'Hilux', 'Land Cruiser'], 'Nissan': ['Micra', 'Sunny', 'Qashqai', 'X-Trail', 'Navara'],
+  'Chevrolet': ['Spark', 'Aveo', 'Sail', 'Cruze', 'Captiva'], 'Suzuki': ['Alto', 'Celerio', 'Swift', 'Vitara'], 'Fiat': ['Panda', '500', 'Tipo', 'Doblo', 'Scudo', 'Ducato'],
+  'Ford': ['Fiesta', 'Focus', 'Kuga', 'Ranger', 'Transit'], 'Opel': ['Corsa', 'Astra', 'Insignia', 'Mokka'], 'Chery': ['QQ', 'Tiggo 2', 'Tiggo 4', 'Tiggo 7'], 'Geely': ['Coolray', 'Emgrand', 'Tugella']
+};
+
+const CATS = {
+  emb: ['Embrayage', 'الأمبرياج', 'Clutch'], man: ['Boîte manuelle', 'العلبة العادية', 'Manual gearbox'],
+  auto: ['Boîte automatique', 'العلبة الأوتوماتيكية', 'Automatic gearbox'], dsg: ['DSG / mécatronique', 'DSG / ميكاترونيك', 'DSG / mechatronic'],
+  cvt: ['CVT', 'CVT', 'CVT'], oil: ['Huiles & filtres', 'الزيوت والفلاتر', 'Oils & filters'],
+  sens: ['Capteurs & commandes', 'الحساسات والتحكم', 'Sensors & controls'], full: ['Boîtes complètes', 'علب كاملة', 'Complete gearboxes']
+};
+/* [catégorie, photo, FR, AR, EN] */
+const PARTS = [
+  ['emb', 'clutch', 'Kit d’embrayage (disque + mécanisme + butée)', 'طقم أمبرياج (ديسك + ميكانيزم + بوتي)', 'Clutch kit (disc + cover + bearing)'],
+  ['emb', 'clutch', 'Volant moteur bimasse', 'فولون مزدوج الكتلة', 'Dual-mass flywheel'],
+  ['emb', 'clutch', 'Butée hydraulique', 'بوتي هيدروليكية', 'Hydraulic release bearing'],
+  ['emb', 'clutch', 'Émetteur et récepteur d’embrayage', 'مضخة وأسطوانة الأمبرياج', 'Clutch master & slave cylinder'],
+  ['emb', 'clutch', 'Câble d’embrayage', 'كابل الأمبرياج', 'Clutch cable'],
+  ['man', 'manual', 'Synchroniseurs', 'السانكرو', 'Synchronisers'],
+  ['man', 'manual', 'Pignons et arbres', 'المسننات والأعمدة', 'Gears and shafts'],
+  ['man', 'manual', 'Roulements de boîte', 'رولمان العلبة', 'Gearbox bearings'],
+  ['man', 'manual', 'Fourchettes et baladeurs', 'الشوكات', 'Shift forks and sleeves'],
+  ['man', 'manual', 'Joints spi et kit joints', 'جوانات وطقم جوانات', 'Oil seals and gasket kit'],
+  ['man', 'manual', 'Différentiel', 'الديفيرونسيال', 'Differential'],
+  ['auto', 'converter', 'Convertisseur de couple', 'محول العزم (كونفرتيسور)', 'Torque converter'],
+  ['auto', 'autoCut', 'Bloc hydraulique (corps de valve)', 'البلوك الهيدروليكي', 'Valve body'],
+  ['auto', 'autoCut', 'Électrovannes (solénoïdes)', 'الصمامات الكهربائية (سولونويد)', 'Solenoids'],
+  ['auto', 'autoCut', 'Pompe à huile de boîte', 'مضخة زيت العلبة', 'Transmission oil pump'],
+  ['auto', 'autoCut', 'Kit disques et garnitures', 'طقم الديسكات', 'Friction and steel plate kit'],
+  ['auto', 'autoCut', 'Calculateur de boîte (TCU)', 'كمبيوتر العلبة (TCU)', 'Transmission control unit (TCU)'],
+  ['auto', 'autoCut', 'Kit de révision (joints, segments)', 'طقم التجديد (جوانات وسيغمان)', 'Overhaul kit (seals, rings)'],
+  ['dsg', 'dsg', 'Bloc mécatronique', 'بلوك الميكاترونيك', 'Mechatronic unit'],
+  ['dsg', 'dct', 'Double embrayage DSG', 'أمبرياج مزدوج DSG', 'DSG dual clutch'],
+  ['dsg', 'dsg', 'Accumulateur de pression', 'خزان الضغط', 'Pressure accumulator'],
+  ['cvt', 'cvt', 'Courroie / chaîne CVT', 'سير / سلسلة CVT', 'CVT belt / chain'],
+  ['cvt', 'cvt', 'Poulies CVT', 'بكرات CVT', 'CVT pulleys'],
+  ['oil', 'atf', 'Huile ATF (boîte automatique)', 'زيت ATF (أوتوماتيك)', 'ATF oil (automatic)'],
+  ['oil', 'atf', 'Huile DSG', 'زيت DSG', 'DSG oil'],
+  ['oil', 'atf', 'Huile CVT', 'زيت CVT', 'CVT fluid'],
+  ['oil', 'atf', 'Huile boîte manuelle (75W80 / 75W90)', 'زيت العلبة العادية (75W80 / 75W90)', 'Manual gearbox oil (75W80 / 75W90)'],
+  ['oil', 'autoCut', 'Filtre de boîte + joint de carter', 'فلتر العلبة + جوان الكارتير', 'Transmission filter + pan gasket'],
+  ['sens', 'shift', 'Capteur de vitesse', 'حساس السرعة', 'Speed sensor'],
+  ['sens', 'shift', 'Contacteur de position (sélecteur)', 'حساس وضعية السيليكتور', 'Range / position switch'],
+  ['sens', 'shift', 'Câbles et commande de vitesses', 'كابلات وتحكم السرعات', 'Gear shift cables and linkage'],
+  ['sens', 'manual', 'Support de boîte', 'سوبور العلبة', 'Gearbox mount'],
+  ['full', 'autoCut', 'Boîte automatique complète', 'علبة أوتوماتيكية كاملة', 'Complete automatic gearbox'],
+  ['full', 'manual', 'Boîte manuelle complète', 'علبة عادية كاملة', 'Complete manual gearbox'],
+  ['full', 'dct', 'Boîte DSG complète', 'علبة DSG كاملة', 'Complete DSG gearbox']
+];
+
+/* =====================================================================
+   LOGIQUE
+   ===================================================================== */
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+let lang = store.get('abv-lang') || 'fr'; if (!T[lang]) lang = 'fr';
+const LI = () => ({ fr: 0, ar: 1, en: 2 })[lang];
+const t = () => T[lang];
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k]);
+const app = document.getElementById('app');
+const rdv = { services: [], box: 'auto', brand: '', brandOther: '', model: '', modelOther: '', year: '', notes: '', shop: 'om', day: 0, time: '10:00', name: '', phone: '', done: false, error: '' };
+const parts = { cat: 'all', q: '' };
+const trk = { name: '', phone: '', data: null, loading: false, error: '', timer: null, approving: false };
+try { const s = JSON.parse(store.get('abv-track2') || 'null'); if (s) { trk.name = s.name || ''; trk.phone = s.phone || ''; } } catch (e) {}
+
+/* ---------- Connexion Supabase ---------- */
+const CFG = window.ABV_CONFIG || {};
+const sb = (window.supabase && CFG.supabaseUrl && CFG.supabaseAnonKey && !/VOTRE/.test(CFG.supabaseUrl + CFG.supabaseAnonKey))
+  ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey) : null;
+const CAT_PHOTO = { emb: 'clutch', man: 'manual', auto: 'autoCut', dsg: 'dsg', cvt: 'cvt', oil: 'atf', sens: 'shift', full: 'autoCut' };
+async function loadParts() {
+  if (!sb) return;
+  const { data, error } = await sb.from('parts_public').select('id,category,name_fr,name_ar,name_en,photo_url,in_stock,sort').order('sort');
+  if (error || !data || !data.length) return;
+  PARTS.length = 0;
+  data.forEach((r) => PARTS.push([r.category, CAT_PHOTO[r.category] || 'manual', r.name_fr, r.name_ar || r.name_fr, r.name_en || r.name_fr, r.photo_url || '']));
+  if (['home', 'pieces'].includes(route())) render();
+}
+
+const ICON_CHECK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';
+const ICON_GEAR = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>';
+const ICON_GEAR_BIG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.5"/><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5"/></svg>';
+const ICON_PHONE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>';
+const ICON_MENU = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8141B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+
+/* ---------- Accueil ---------- */
+function home() {
+  const x = t();
+  const bImgs = [[CAR.auto, ''], [CAR.dsg, ''], [CAR.manual, '']];
+  return '' +
+  '<div class="wrap hero">' +
+    '<div class="hero-text"><p class="eyebrow">' + esc(x.eyebrow) + '</p>' +
+      '<h1><span class="r">' + esc(x.heroA) + '</span>' + esc(x.heroB) + '</h1>' +
+      '<p class="hero-sub">' + esc(x.heroSub) + '</p>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px"><a class="btn btn-red" href="#/rdv">' + esc(x.ctaRdvLong) + '</a><a class="btn btn-ghost" href="#/pieces">' + esc(x.ctaParts) + '</a></div>' +
+      '<div class="points">' + x.heroPoints.map((p) => '<span>' + ICON_CHECK + esc(p) + '</span>').join('') + '</div></div>' +
+    '<div class="hero-visual"><div class="chev c1" aria-hidden="true"></div><div class="chev c2" aria-hidden="true"></div><img src="' + CAR.hero + '" alt="' + esc(x.heroAlt) + '"></div>' +
+  '</div>' +
+  '<section id="services"><div class="wrap"><div class="framed">' +
+    '<div class="framed-head"><h2>' + esc(x.servicesTitle) + '</h2><span class="badge">' + esc(x.onQuote) + '</span></div>' +
+    '<div class="grid">' + x.services.map(([ti, d]) => '<article class="svc"><span class="ic">' + ICON_GEAR + '</span><h3>' + esc(ti) + '</h3><p>' + esc(d) + '</p><div class="bar"><i></i></div><div class="foot"><span class="quote">' + esc(x.onQuote) + '</span><a class="btn-sm" href="#/rdv">' + esc(x.book) + '</a></div></article>').join('') + '</div>' +
+  '</div></div></section>' +
+  '<section><div class="wrap banners">' + x.banners.map(([ti, tag, sub], i) =>
+    '<a class="banner" href="#/rdv"><div class="pic"><img class="' + bImgs[i][1] + '" src="' + bImgs[i][0] + '" alt="' + esc(ti) + '"><span class="tag">' + esc(tag) + '</span></div><div class="txt"><h3>' + esc(ti) + '</h3><p class="muted" style="font-size:14px">' + esc(sub) + '</p><span class="go">' + esc(x.bannerCta) + '</span></div></a>').join('') +
+  '</div></section>' +
+  '<section><div class="wrap" style="display:flex;flex-direction:column;gap:22px">' +
+    '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px"><h2 class="section-title">' + esc(x.partsTitle) + '</h2><a class="btn-sm" href="#/pieces">' + esc(x.ctaParts) + ' ›</a></div>' +
+    shopHtml(true) +
+  '</div></section>' +
+  '<div class="band"><div class="wrap">' +
+    '<div style="flex:1 1 420px;display:flex;flex-direction:column;gap:14px"><h2 style="font-weight:900;font-size:clamp(30px,3.6vw,40px)">' + esc(x.bandTitle) + '</h2><p style="font-size:17px;line-height:1.6;color:var(--muted-2)">' + esc(x.bandSub) + '</p>' +
+      '<ol class="steps" style="margin-top:8px">' + x.steps.map((s, i) => '<li><span class="n">' + (i + 1) + '</span>' + esc(s) + '</li>').join('') + '</ol></div>' +
+    '<div class="pic"><img src="' + CAR.band + '" alt=""><a class="btn btn-red" href="#/rdv">' + esc(x.ctaRdvLong) + '</a></div>' +
+  '</div></div>';
+}
+
+/* ---------- Pièces ---------- */
+function partsList(limit) {
+  const q = parts.q.trim().toLowerCase(); const L = LI();
+  let list = PARTS.map((p) => ({ c: p[0], photo: p[1], url: p[5] || '', name: p[2 + L] })).filter((p) => (parts.cat === 'all' || p.c === parts.cat) && (!q || p.name.toLowerCase().includes(q)));
+  return limit ? list.slice(0, limit) : list;
+}
+function partsGridHtml(limit) {
+  const x = t(); const L = LI(); const list = partsList(limit);
+  if (!list.length) return '<p class="muted" style="padding:24px 20px">' + esc(x.noResult) + '</p>';
+  return '<div class="parts">' + list.map((p) =>
+    '<article class="part"><div class="pic"><img src="' + esc(p.url || PHOTO[p.photo].src) + '" alt="' + esc(p.name) + '" loading="lazy" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()"><span class="ph">' + ICON_GEAR_BIG + '</span></div>' +
+    '<span class="cat">' + esc(CATS[p.c][L]) + '</span><h3>' + esc(p.name) + '</h3><p class="quote">' + esc(x.onQuote) + '</p>' +
+    '<div class="acts"><a class="btn-sm" href="https://wa.me/' + (p.c === 'man' || p.c === 'emb' ? INFO.phoneManual.intl : INFO.phoneAuto.intl) + '?text=' + encodeURIComponent(x.waPart + p.name) + '" target="_blank" rel="noopener">' + esc(x.ask) + '</a>' +
+    '<a class="icon-btn" href="tel:+' + (p.c === 'man' || p.c === 'emb' ? INFO.phoneManual.intl : INFO.phoneAuto.intl) + '" aria-label="' + esc(x.call) + '">' + ICON_PHONE + '</a></div></article>').join('') + '</div>';
+}
+function shopHtml(preview) {
+  const x = t(); const L = LI();
+  const cats = [['all', x.all, PARTS.length]].concat(Object.keys(CATS).map((k) => [k, CATS[k][L], PARTS.filter((p) => p[0] === k).length]));
+  return '<div class="shop"><div class="cats"><p class="t">' + ICON_MENU + esc(x.allCats) + '</p>' +
+    cats.map(([k, label, n]) => '<button type="button" data-act="cat" data-v="' + k + '" aria-pressed="' + (parts.cat === k) + '"><span>' + esc(label) + ' <span style="opacity:.6">(' + n + ')</span></span><span aria-hidden="true">' + (lang === 'ar' ? '‹' : '›') + '</span></button>').join('') + '</div>' +
+    '<div class="shop-main">' + (preview ? '' : '<div class="searchrow"><input type="search" data-field="q" value="' + esc(parts.q) + '" placeholder="' + esc(x.searchPh) + '" aria-label="' + esc(x.searchPh) + '"><span class="muted" style="font-size:14px" id="count">' + partsList().length + ' ' + esc(x.results) + '</span></div>') +
+    '<div id="parts-grid">' + partsGridHtml(preview ? 8 : 0) + '</div><p class="photo-note">' + esc(x.photoNote) + '</p></div></div>';
+}
+function partsPage() {
+  const x = t();
+  return '<div class="wrap" style="padding-bottom:72px"><div class="page-head"><p class="eyebrow">' + esc(x.navParts) + '</p><h1>' + esc(x.partsTitle) + '</h1><p class="muted" style="font-size:17px;max-width:720px">' + esc(x.partsSub) + '</p></div>' + shopHtml(false) + '</div>';
+}
+
+/* ---------- RDV ---------- */
+const hoursFor = (d) => INFO.hours[d.getDay()];
+function rdvDays() { const out = []; const d0 = new Date(); for (let i = 1; out.length < 9; i++) { const d = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() + i); if (hoursFor(d)) out.push(d); } return out; }
+const fmtDay = (d) => d.toLocaleDateString(t().locale, { weekday: 'short', day: 'numeric', month: 'short' });
+const curHours = () => hoursFor(rdvDays()[rdv.day]);
+const timeValid = () => { const h = curHours(); return rdv.time >= h[0] && rdv.time <= h[1]; };
+const rdvPhone = () => rdv.shop === 'bo' ? INFO.phoneBouira : (rdv.box === 'man' ? INFO.phoneManual : INFO.phoneAuto);
+function rdvCar() {
+  const x = t(); const brand = rdv.brand === '__other' ? rdv.brandOther : rdv.brand;
+  const model = (rdv.brand === '__other' || rdv.model === '__other') ? rdv.modelOther : rdv.model;
+  return [x.bx[rdv.box], brand, model, rdv.year].filter(Boolean).join(' · ');
+}
+function rdvRecapHtml() {
+  const x = t(); const days = rdvDays(); const ph = rdvPhone();
+  const svc = rdv.services.length ? rdv.services.map((k) => x.svc[k]).join(', ') : x.none;
+  return '<h2>' + esc(x.recap) + '</h2><dl>' +
+    '<div><dt>' + esc(x.recServices) + '</dt><dd>' + esc(svc) + '</dd></div>' +
+    '<div><dt>' + esc(x.recCar) + '</dt><dd>' + esc(rdvCar() || x.none) + '</dd></div>' +
+    '<div><dt>' + esc(x.workshop) + '</dt><dd>' + esc(x.shops[rdv.shop]) + '</dd></div>' +
+    '<div><dt>' + esc(x.recWhen) + '</dt><dd>' + esc(fmtDay(days[rdv.day]) + ' ' + x.at + ' ' + rdv.time) + '</dd></div>' +
+    '<div><dt>' + esc(x.recPrice) + '</dt><dd>' + esc(x.priceQuote) + '</dd></div>' +
+    '<div><dt>' + esc(x.sentTo) + '</dt><dd dir="ltr" style="text-align:start">' + ph.display + '</dd></div></dl>' +
+    '<p class="note">' + esc(x.recNote) + '</p>' + (rdv.error ? '<p class="err" role="alert">' + esc(rdv.error) + '</p>' : '') +
+    '<button type="submit" form="rdv-form" class="btn btn-red" style="width:100%"' + (rdv.sending ? ' disabled' : '') + '>' + esc(rdv.sending ? x.sending : (sb ? x.confirmDb : x.confirm)) + '</button>' +
+    '<p class="note">' + esc(x.orCall) + ' <a href="tel:+' + ph.intl + '" dir="ltr" style="font-weight:700">' + ph.display + '</a></p>';
+}
+function timeMsgHtml() { const x = t(); const h = curHours(); return fill(timeValid() ? x.openFromTo : x.timeBad, { a: h[0], b: h[1] }); }
+function rdvPage() {
+  const x = t();
+  if (rdv.done) {
+    const ok = rdv.saved === true;
+    return '<div class="wrap" style="padding-top:44px"><div class="done">' + (ok ? '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>' : '') +
+      '<h1 style="font-size:30px;font-weight:900">' + esc(ok ? x.savedTitle : (rdv.saved === false ? x.saveErr : x.sentTitle)) + '</h1>' +
+      (ok ? '<p class="muted">' + esc(x.savedSub) + '</p>' : rdv.saved === false ? '' : '<p class="muted">' + esc(x.sentSub) + '</p>') +
+      '<div style="display:flex;flex-wrap:wrap;gap:10px">' + (rdv.waUrl ? '<a class="btn btn-red" href="' + esc(rdv.waUrl) + '" target="_blank" rel="noopener">' + esc(ok ? x.alsoWa : x.confirm) + '</a>' : '') +
+      '<button type="button" class="btn btn-ghost" data-act="rdv-reset">' + esc(x.newReq) + '</button></div></div></div>';
+  }
+  const days = rdvDays(); const h = curHours(); const models = CARS[rdv.brand] || [];
+  const opt = (v, label, sel) => '<option value="' + esc(v) + '"' + (sel ? ' selected' : '') + '>' + esc(label) + '</option>';
+  return '<div class="wrap"><div class="page-head"><p class="eyebrow">' + esc(x.navRdv) + '</p><h1>' + esc(x.rdvTitle) + '</h1><p class="muted" style="font-size:17px">' + esc(x.rdvSub) + '</p></div>' +
+  '<div class="layout"><form id="rdv-form" novalidate>' +
+    '<fieldset><legend>' + esc(x.s1) + '</legend><p class="muted" style="font-size:14px">' + esc(x.s1hint) + '</p><div class="tiles">' +
+      Object.keys(x.svc).map((k) => { const on = rdv.services.includes(k); return '<button type="button" class="tile" data-act="svc" data-v="' + k + '" aria-pressed="' + on + '"><span class="ck" aria-hidden="true">' + (on ? '✓' : '') + '</span><span>' + esc(x.svc[k]) + '</span></button>'; }).join('') + '</div></fieldset>' +
+    '<fieldset><legend>' + esc(x.s2) + '</legend>' +
+      '<div><p style="font-size:14px;font-weight:600;margin-bottom:10px">' + esc(x.boxType) + '</p><div class="pills">' + Object.keys(x.bx).map((k) => '<button type="button" class="pill" data-act="box" data-v="' + k + '" aria-pressed="' + (rdv.box === k) + '">' + esc(x.bx[k]) + '</button>').join('') + '</div></div>' +
+      '<div class="cols">' +
+        '<div style="display:flex;flex-direction:column;gap:8px"><label class="f">' + esc(x.brandL) + '<select data-field="brand">' + opt('', x.choose, !rdv.brand) + Object.keys(CARS).map((b) => opt(b, b, rdv.brand === b)).join('') + opt('__other', x.other, rdv.brand === '__other') + '</select></label>' +
+          (rdv.brand === '__other' ? '<label class="f" style="font-size:13px">' + esc(x.typeBrand) + '<input type="text" data-field="brandOther" value="' + esc(rdv.brandOther) + '"></label>' : '') + '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:8px">' +
+          (rdv.brand === '__other' ? '' : '<label class="f">' + esc(x.modelL) + '<select data-field="model"' + (rdv.brand ? '' : ' disabled') + '>' + opt('', rdv.brand ? x.choose : x.chooseBrandFirst, !rdv.model) + models.map((m) => opt(m, m, rdv.model === m)).join('') + opt('__other', x.other, rdv.model === '__other') + '</select></label>') +
+          ((rdv.brand === '__other' || rdv.model === '__other') ? '<label class="f" style="font-size:13px">' + esc(x.typeModel) + '<input type="text" data-field="modelOther" value="' + esc(rdv.modelOther) + '"></label>' : '') + '</div>' +
+        '<label class="f">' + esc(x.yearL) + '<input type="text" inputmode="numeric" maxlength="4" placeholder="2018" data-field="year" value="' + esc(rdv.year) + '"></label>' +
+      '</div>' +
+      '<label class="f">' + esc(x.symptoms) + '<textarea rows="3" data-field="notes" placeholder="' + esc(x.symptomsPh) + '">' + esc(rdv.notes) + '</textarea></label></fieldset>' +
+    '<fieldset><legend>' + esc(x.s3) + '</legend>' +
+      '<div><p style="font-size:14px;font-weight:600;margin-bottom:10px">' + esc(x.workshop) + '</p><div class="pills">' + Object.keys(x.shops).map((k) => '<button type="button" class="pill" data-act="shop" data-v="' + k + '" aria-pressed="' + (rdv.shop === k) + '">' + esc(x.shops[k]) + '</button>').join('') + '</div></div>' +
+      '<div><p style="font-size:14px;font-weight:600;margin-bottom:10px">' + esc(x.day) + ' <span class="muted" style="font-weight:400">' + esc(x.dayHint) + '</span></p><div class="days">' +
+        days.map((d, i) => '<button type="button" class="pill" data-act="day" data-v="' + i + '" aria-pressed="' + (rdv.day === i) + '">' + esc(fmtDay(d)) + '</button>').join('') + '</div></div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end"><label class="f">' + esc(x.time) + '<input type="time" dir="ltr" min="' + h[0] + '" max="' + h[1] + '" step="300" data-field="time" value="' + esc(rdv.time) + '" style="width:180px;font-size:18px;font-weight:700;color-scheme:dark"></label>' +
+        '<p id="time-msg" class="time-msg' + (timeValid() ? '' : ' bad') + '" style="margin-bottom:12px">' + esc(timeMsgHtml()) + '</p></div>' +
+      '<div class="cols"><label class="f">' + esc(x.name) + '<input type="text" autocomplete="name" data-field="name" value="' + esc(rdv.name) + '"></label>' +
+        '<label class="f">' + esc(x.phone) + '<input type="tel" dir="ltr" autocomplete="tel" placeholder="05 / 06 / 07 …" data-field="phone" value="' + esc(rdv.phone) + '"></label></div></fieldset>' +
+  '</form><aside class="recap" id="recap">' + rdvRecapHtml() + '</aside></div></div>';
+}
+const ymd = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+async function rdvSubmit() {
+  const x = t();
+  if (rdv.sending) return;
+  if (!rdv.services.length) rdv.error = x.errServices;
+  else if (!timeValid()) rdv.error = x.errTime;
+  else if (!rdv.name.trim() || !rdv.phone.trim()) rdv.error = x.errName;
+  else rdv.error = '';
+  if (rdv.error) { document.getElementById('recap').innerHTML = rdvRecapHtml(); return; }
+  const days = rdvDays(); const day = days[rdv.day];
+  const lines = [x.waHello,
+    '• ' + x.recServices + ' : ' + rdv.services.map((k) => x.svc[k]).join(', '),
+    '• ' + x.recCar + ' : ' + (rdvCar() || x.none),
+    '• ' + x.workshop + ' : ' + x.shops[rdv.shop],
+    '• ' + x.recWhen + ' : ' + fmtDay(day) + ' ' + x.at + ' ' + rdv.time,
+    '• ' + x.waName + ' : ' + rdv.name.trim(),
+    '• ' + x.waPhone + ' : ' + rdv.phone.trim()];
+  if (rdv.notes.trim()) lines.push('• ' + x.waNotes + ' : ' + rdv.notes.trim());
+  rdv.waUrl = 'https://wa.me/' + rdvPhone().intl + '?text=' + encodeURIComponent(lines.join('\n'));
+  if (!sb) { window.open(rdv.waUrl, '_blank', 'noopener'); rdv.saved = null; rdv.done = true; render(); return; }
+  rdv.sending = true; document.getElementById('recap').innerHTML = rdvRecapHtml();
+  const brand = rdv.brand === '__other' ? rdv.brandOther : rdv.brand;
+  const model = (rdv.brand === '__other' || rdv.model === '__other') ? rdv.modelOther : rdv.model;
+  const { error } = await sb.from('appointments').insert({
+    services: rdv.services, box_type: rdv.box, brand: brand || null, model: model || null, year: rdv.year || null,
+    notes: rdv.notes.trim() || null, workshop: rdv.shop, appt_date: ymd(day), appt_time: rdv.time,
+    customer_name: rdv.name.trim(), phone: rdv.phone.trim(), lang
+  });
+  rdv.sending = false; rdv.saved = !error; rdv.done = true;
+  if (error) console.error(error);
+  render(); window.scrollTo(0, 0);
+}
+
+/* ---------- Suivi (réel, via Supabase) ---------- */
+async function fetchTrack(silent) {
+  if (!sb || !trk.name.trim() || !trk.phone.trim()) return;
+  if (!silent) { trk.loading = true; trk.error = ''; render(); }
+  const { data, error } = await sb.rpc('track_by_contact', { p_name: trk.name.trim(), p_phone: trk.phone.trim() });
+  trk.loading = false;
+  if (error) { trk.error = t().trackErr; trk.data = null; }
+  else if (!data || !data.length) { trk.error = t().trackNotFound; trk.data = null; }
+  else { trk.error = ''; trk.data = data; store.set('abv-track2', JSON.stringify({ name: trk.name, phone: trk.phone })); }
+  if (route() === 'suivi') { const el = document.getElementById('trk-result'); if (el && silent) el.innerHTML = trackResultHtml(); else render(); }
+}
+async function approveQuote(id) {
+  if (!sb || trk.approving || !id) return;
+  trk.approving = true; render();
+  await sb.rpc('approve_quote_contact', { p_id: id, p_name: trk.name.trim(), p_phone: trk.phone.trim() });
+  trk.approving = false; fetchTrack(false);
+}
+function startTrackPolling() {
+  clearInterval(trk.timer);
+  trk.timer = setInterval(() => { if (route() === 'suivi' && trk.data && document.visibilityState === 'visible') fetchTrack(true); }, 15000);
+}
+function trackResultHtml() {
+  if (trk.loading) return '<p class="muted">…</p>';
+  if (trk.error) return '<p class="demo-note">' + esc(trk.error) + '</p>';
+  if (!trk.data) return '';
+  return trk.data.map(carHtml).join('<hr style="border:0;border-top:1px solid var(--line);margin:8px 0">');
+}
+function carHtml(d) {
+  const x = t();
+  const n = x.steps7.length; const step = Math.min(d.step, n - 1);
+  const evAt = {}; (d.events || []).forEach((e) => { if (e.step !== null && e.step !== undefined) evAt[e.step] = e.at; });
+  const fmt = (s) => s ? new Date(s).toLocaleString(x.locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+  const car = [d.brand, d.model, x.bx[d.box_type]].filter(Boolean).join(' · ');
+  const money = (v) => Number(v).toLocaleString(x.locale) + ' ' + x.da;
+  let quote = '';
+  if (d.quote_status === 'en_attente') {
+    quote = '<div class="info" style="border:2px solid var(--red)"><p class="lbl">' + esc(x.action) + '</p><h2 style="font-size:20px">' + esc(x.quoteTitle) + '</h2>' +
+      (d.diagnosis ? '<p><b>' + esc(x.diagnosisL) + ' :</b> ' + esc(d.diagnosis) + '</p>' : '') +
+      (d.quote_amount ? '<p style="font-family:var(--head);font-weight:800;font-size:24px">' + esc(money(d.quote_amount)) + '</p>' : '<p class="muted" style="font-size:14px">' + esc(x.quoteSub) + '</p>') +
+      '<div style="display:flex;gap:8px"><button class="btn btn-red" style="flex:1" type="button" data-act="trk-approve" data-v="' + esc(d.id) + '"' + (trk.approving ? ' disabled' : '') + '>' + esc(x.approve) + '</button><a class="btn btn-ghost" style="flex:1" href="tel:+' + (d.box_type === 'man' ? INFO.phoneManual.intl : INFO.phoneAuto.intl) + '">' + esc(x.call) + '</a></div></div>';
+  } else if (d.quote_status === 'valide') {
+    quote = '<div class="info"><p class="lbl">' + esc(x.quoteAmount) + '</p>' + (d.quote_amount ? '<p style="font-family:var(--head);font-weight:800;font-size:22px">' + esc(money(d.quote_amount)) + '</p>' : '') + '<p style="color:#4ADE80;font-weight:700">' + esc(x.quoteApproved) + '</p>' + (d.diagnosis ? '<p class="muted" style="font-size:14px">' + esc(x.diagnosisL) + ' : ' + esc(d.diagnosis) + '</p>' : '') + '</div>';
+  } else if (d.quote_status === 'refuse') {
+    quote = '<div class="info"><p class="lbl">' + esc(x.quoteRefused) + '</p></div>';
+  } else if (d.diagnosis) {
+    quote = '<div class="info"><p class="lbl">' + esc(x.diagnosisL) + '</p><p>' + esc(d.diagnosis) + '</p></div>';
+  }
+  return '<div class="info"><p class="muted" style="font-size:13px">' + esc(x.yourCar) + '</p><p style="font-family:var(--head);font-weight:800;font-size:22px">' + esc(car || '—') + '</p>' +
+      '<div style="display:flex;gap:6px" aria-hidden="true">' + x.steps7.map((s, i) => '<span style="flex:1;height:6px;border-radius:3px;background:' + (i <= step ? 'var(--red)' : '#3A3A40') + '"></span>').join('') + '</div>' +
+      '<p style="font-weight:700;font-size:14px">' + esc(fill(x.stepOf, { a: step + 1, b: n })) + ' · ' + esc(x.steps7[step]) + '</p>' +
+      '<p class="muted" style="font-size:12px">' + esc(x.lastUpdate) + ' : ' + esc(fmt(d.updated_at)) + ' · ' + esc(x.liveNote) + '</p></div>' + quote +
+    '<ol class="timeline">' + x.steps7.map((ti, i) => { const st = i < step ? 'done' : i === step ? 'now' : 'todo';
+      return '<li><div class="rail"><span class="dot ' + st + '"></span>' + (i < n - 1 ? '<span class="vbar ' + (st === 'done' ? 'done' : '') + '"></span>' : '') + '</div><div class="txt"><p style="font-weight:' + (st === 'todo' ? 500 : 700) + ';color:' + (st === 'todo' ? 'var(--muted)' : '#fff') + '">' + esc(ti) + '</p>' + (evAt[i] && st !== 'todo' ? '<p class="muted" style="font-size:13px">' + esc(fmt(evAt[i])) + '</p>' : '') + '</div></li>'; }).join('') + '</ol>';
+}
+function trackPage() {
+  const x = t();
+  if (!sb) return '<div class="track"><p class="eyebrow">' + esc(x.navTrack) + '</p><h1 style="font-size:36px;font-weight:900">' + esc(x.trackTitle) + '</h1><p class="demo-note">' + esc(x.demo) + '</p></div>';
+  return '<div class="track"><p class="eyebrow">' + esc(x.navTrack) + '</p><h1 style="font-size:36px;font-weight:900">' + esc(x.trackTitle) + '</h1><p class="muted">' + esc(x.trackSub) + '</p>' +
+    '<form id="trk-form" class="cols" novalidate><label class="f">' + esc(x.trackName) + '<input type="text" data-tfield="name" value="' + esc(trk.name) + '" autocomplete="name"></label>' +
+    '<label class="f">' + esc(x.trackPhone) + '<input type="tel" dir="ltr" data-tfield="phone" value="' + esc(trk.phone) + '" placeholder="05 / 06 / 07 …"></label>' +
+    '<button class="btn btn-red" type="submit">' + esc(x.search) + '</button></form>' +
+    '<div id="trk-result" style="display:flex;flex-direction:column;gap:18px">' + trackResultHtml() + '</div></div>';
+}
+
+/* ---------- Rendu & routes ---------- */
+function route() { const h = location.hash.replace(/^#\/?/, '').split('#')[0].split('?')[0]; return ['rdv', 'pieces', 'suivi'].includes(h) ? h : 'home'; }
+function render() {
+  const x = t(); const r = route();
+  document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = x[el.dataset.t]; });
+  document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  document.querySelectorAll('nav.main [data-route]').forEach((a) => { if (a.dataset.route === r) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  app.innerHTML = r === 'rdv' ? rdvPage() : r === 'pieces' ? partsPage() : r === 'suivi' ? trackPage() : home();
+}
+function staticSetup() {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-social="tiktok"]').forEach((a) => { a.href = INFO.tiktok; });
+  document.getElementById('dir-link').href = 'https://www.google.com/maps/dir/?api=1&destination=' + INFO.hq.lat + ',' + INFO.hq.lng + '&destination_place_id=' + INFO.hq.placeId;
+  document.getElementById('maps-link').href = 'https://www.google.com/maps/search/?api=1&query=Ahmed+Boite+Vitesse+Ouled+Moussa&query_place_id=' + INFO.hq.placeId;
+  document.getElementById('map').src = 'https://maps.google.com/maps?q=' + INFO.hq.lat + ',' + INFO.hq.lng + '&z=15&output=embed';
+  document.getElementById('credits').innerHTML = 'Voitures : photos fournies par l’entreprise.<br>Pièces (Wikimedia Commons) : ' +
+    Object.values(PHOTO).map((p) => '<a href="' + esc(p.src.replace('Special:FilePath/', 'File:').replace('?width=500', '')) + '" target="_blank" rel="noopener">' + esc(p.credit) + '</a>').join(' · ');
+}
+document.addEventListener('click', (e) => {
+  const lb = e.target.closest('[data-lang]'); if (lb) { lang = lb.dataset.lang; store.set('abv-lang', lang); render(); return; }
+  const b = e.target.closest('[data-act]'); if (!b) return; const v = b.dataset.v;
+  switch (b.dataset.act) {
+    case 'svc': rdv.services = rdv.services.includes(v) ? rdv.services.filter((k) => k !== v) : rdv.services.concat(v); rdv.error = ''; break;
+    case 'box': rdv.box = v; break;
+    case 'shop': rdv.shop = v; break;
+    case 'day': rdv.day = +v; break;
+    case 'cat': parts.cat = v; break;
+    case 'rdv-reset': Object.assign(rdv, { done: false, saved: null, waUrl: '', services: [], notes: '', error: '' }); break;
+    case 'trk-approve': approveQuote(v); return;
+  }
+  render();
+});
+document.addEventListener('input', (e) => {
+  const tf = e.target.dataset && e.target.dataset.tfield; if (tf) { trk[tf] = e.target.value; return; }
+  const f = e.target.dataset && e.target.dataset.field; if (!f) return;
+  if (f === 'q') { parts.q = e.target.value; document.getElementById('parts-grid').innerHTML = partsGridHtml(0); document.getElementById('count').textContent = partsList().length + ' ' + t().results; return; }
+  rdv[f] = e.target.value; rdv.error = '';
+  if (f === 'time') { const m = document.getElementById('time-msg'); m.textContent = timeMsgHtml(); m.className = 'time-msg' + (timeValid() ? '' : ' bad'); }
+  const recap = document.getElementById('recap'); if (recap) recap.innerHTML = rdvRecapHtml();
+});
+document.addEventListener('change', (e) => {
+  const f = e.target.dataset && e.target.dataset.field;
+  if (f === 'brand') { rdv.brand = e.target.value; rdv.model = ''; render(); }
+  else if (f === 'model') { rdv.model = e.target.value; render(); }
+});
+document.addEventListener('submit', (e) => {
+  if (e.target.id === 'rdv-form') { e.preventDefault(); rdvSubmit(); }
+  if (e.target.id === 'trk-form') { e.preventDefault(); fetchTrack(false); }
+});
+window.addEventListener('hashchange', () => {
+  render(); if (route() === 'suivi' && trk.name && trk.phone && !trk.data) fetchTrack(false); const anchor = location.hash.split('#')[2];
+  if (anchor) { const el = document.getElementById(anchor); if (el) el.scrollIntoView(); } else window.scrollTo(0, 0);
+});
+staticSetup();
+
+render(); loadParts(); startTrackPolling();
+if (route() === 'suivi' && trk.name && trk.phone) fetchTrack(false);
+</script>
+</body>
+</html>
